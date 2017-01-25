@@ -27,7 +27,7 @@ import android.net.Uri;
 
 /**
  * Helper class for the Catch Notes integration, based on example code at
- * {@link https://github.com/catch/docs-api/}.
+ * https://github.com/catch/docs-api/.
  */
 public class CatchNotesHelper {
     private static final String TAG = "CatchNotesHelper";
@@ -68,7 +68,7 @@ public class CatchNotesHelper {
         intent.putExtra(EXTRA_SOURCE, mContext.getString(R.string.app_name));
 //        intent.putExtra(EXTRA_SOURCE_URL, "http://www.google.com/io/");
         intent.putExtra(EXTRA_SOURCE_URL, "http://www.ietf.org/");
-        intent.putExtra(Intent.EXTRA_TITLE, mContext.getString(R.string.app_name));
+        intent.putExtra(Intent.EXTRA_TITLE,mContext.getString(R.string.app_name));
         return intent;
     }
 

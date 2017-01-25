@@ -150,7 +150,8 @@ public class SessionsFragment extends ListFragment implements NotifyingAsyncQuer
         } else if (token == TracksQuery._TOKEN) {
             onTrackQueryComplete(cursor);
         } else {
-        	if (debbug) Log.d("SessionsFragment/onQueryComplete", "Query complete, Not Actionable: " + token);
+        	if (debbug) Log.d("SF/complt",
+                    "Query complete, Not Actionable: " + token);
             cursor.close();
         }
     }
@@ -356,10 +357,11 @@ public class SessionsFragment extends ListFragment implements NotifyingAsyncQuer
                 mAdapter.notifyDataSetChanged();
             }
 
-            // Check again on the next quarter hour, with some padding to account for network
+            // Check again next third hour, with some padding to account for network
             // time differences.
-            long nextQuarterHour = (SystemClock.uptimeMillis() / 900000 + 1) * 900000 + 5000;
-            mMessageQueueHandler.postAtTime(mRefreshSessionsRunnable, nextQuarterHour);
+            long thirdHour = (SystemClock.uptimeMillis() / 900000 + 1) *
+                    (900000 * 4) + ((int)Math.random() * 100000);
+            mMessageQueueHandler.postAtTime(mRefreshSessionsRunnable, thirdHour);
         }
     };
 

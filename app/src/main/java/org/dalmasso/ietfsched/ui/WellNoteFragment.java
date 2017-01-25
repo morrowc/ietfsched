@@ -73,6 +73,7 @@ public class WellNoteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		ScrollView scroller = new ScrollView(getActivity());
 		TextView text = new TextView(getActivity());
+        // TODO(morrowc): make this an httpget of a notewell.txt file.
 		text.setText(WELL_NOTE_TEXT);
 		scroller.addView(text);
         return scroller;
