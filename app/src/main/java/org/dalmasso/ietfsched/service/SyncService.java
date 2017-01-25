@@ -80,8 +80,9 @@ public class SyncService extends IntentService {
 
     /** Root worksheet feed for online data source */
     // TODO: insert your sessions/speakers/vendors spreadsheet doc URL here.
-//    private static final String WORKSHEETS_URL = "INSERT_SPREADSHEET_URL_HERE";
-	private static final String BASE_URL = "https://datatracker.ietf.org/meeting/97/";
+    // private static final String WORKSHEETS_URL = "INSERT_SPREADSHEET_URL_HERE";
+	// private static final String BASE_URL = "https://datatracker.ietf.org/meeting/98/";
+    private static final String BASE_URL = "http://email.ops-netman.net/tmp/";
     private static final String HEADER_ACCEPT_ENCODING = "Accept-Encoding";
     private static final String ENCODING_GZIP = "gzip";
 
@@ -149,7 +150,7 @@ public class SyncService extends IntentService {
 			e.printStackTrace();
 		}
 
-// HACK FOR TESTS PURPOSES. TO REMOVE 
+// HACK FOR TESTS PURPOSES. TO REMOVE
 //		Log.w(TAG, "For tests purposes, only the local parsing is activated");
 //		remoteParse = false;
 //		localParse = true;
@@ -162,6 +163,7 @@ public class SyncService extends IntentService {
 			}
 	
 		if (remoteParse) {
+            // "Date","Start","End","Session","Room","Area","Acronym","Type","Description","Session ID","Agenda","Slides"
 			String csvURL = BASE_URL + "agenda.csv";
 			try {
 				if (debbug) Log.d(TAG, csvURL);
@@ -201,24 +203,6 @@ public class SyncService extends IntentService {
 				}
 			}
 		}
-
-/*		Log.d(TAG, "Check DB");
-		try {
-			android.net.Uri contentURI = android.net.Uri.parse("content://org.dalmasso.ietfsched/sessions_tracks");
-			final ContentResolver resolver = getContentResolver();
-			Cursor cursor = resolver.query(contentURI, null, null, null, null);
-			int columns = cursor.getColumnCount();
-		
-			while (cursor.moveToNext()) {
-				Log.d(TAG, "Cursor position " + cursor.getPosition() + " " + cursor.getString(1) + "/" + cursor.getString(2));
-				}
-			}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-*/	
-	
-	
     }
 
 
